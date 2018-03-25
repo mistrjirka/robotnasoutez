@@ -2,8 +2,6 @@ from ev3dev.ev3 import LargeMotor as LM
 from ev3dev.ev3 import MediumMotor as MM
 from ev3dev.ev3 import ColorSensor as CS
 import time
-import _thread as th
-
 def motorControl (mot1, mot2, command = None):
 	if command != None:
 		if command["type"] == "go":
@@ -34,29 +32,60 @@ def motorControl (mot1, mot2, command = None):
 		else:
 			print(command)
 class robot:
-	def __init__(self, dist = 600, turnLMP = [240, -240], turnRMP = [-240, 240]):
-		self.commands = [{"direction":"right", "toDo": turnRMP, "type": "turn"},{"direction":"left", "toDo": turnLMP, "type": "turn"},{"direction":"backward", "toDo": dist * -1, "type":"go"} ,{"direction":"forward", "toDo": dist, "type": "go"}]
-	
+	def __init__(self, colorS = [{"val": [3,6], "toDo": "forward"},{"val": [2], "toDo": "right"},{"val": [5], "toDo": "left"}], dist = 600, turnLMP = [240, -240], turnRMP = [-240, 240]):
+		self.commands = [{"direction":"right", "toDo": turnRMP, "type": "turn"}, {"direction":"left", "toDo": turnLMP, "type": "turn"}, {"direction":"backward", "toDo": dist * -1, "type":"go"}, {"direction":"forward", "toDo": dist, "type": "go"}]
+		self.colorSheet = colorS
+		self.greenCounter = 0
+		self.colorBefore = None;
 	def do(self, whatToDo, mot1, mot2):
 		for i in self.commands:
 			
 			if i["direction"] == whatToDo:
 				print (i)
 				motorControl(mot1,mot2, {"type": i["type"],"par":i["toDo"]})
-				
+	def colorResponse(self, color):
+		
+		if color == 0 or color == 1:
+			print ("robot is maybe not in the right place")
+		else:
+			for i in self.colorSheet:
+				for j in i["val"]:
+					if color == j:
+						if self.colorBefore != None:
+							if color == 3 and self.colorBefore != 3:
+								self.greenCounter = self.greenCounter + 1
+								if self.greenCounter == 2:
+									self.greenCounter = 0
+									return {"toDo": i[toDo], "event": "brickDown"}								
+						return {"toDo": i["toDo"], "event": None}
+	def brickDown(self, mot):
+		print("brickDown")
+		
 rob = robot()
 
 brickMotor = MM("outD")
 mot1 = LM("outC")
 mot2 = LM("outB")
-#~ await mot1.run_to_rel_pos(position_sp=command["par"][0], dist_sp=900, stop_action="hold")
 rob.do("right", mot1, mot2)
 rob.do("left", mot1, mot2)
 rob.do("forward", mot1, mot2)
 rob.do("backward", mot1, mot2)
 cs = CS()
-while True:
-	color = cs.color
-	print (cs.color)
-	if cs.color != 0 and cs.color != 1:
-		print("color is not black or none")
+#~ cs.mode='RGB-RAW'
+def start():
+	while True:
+		if cs.color == 4:
+			while True:
+				print(cs.color)
+				color = cs.color
+				toDo = rob.colorResponse(color)
+				print(toDo)
+				if toDo != None:
+					if toDo["event"] is None:
+						rob.brickDown("")
+						rob.do(toDo["toDo"], mot1, mot2)
+					elif toDo["event"] == "brickDown":
+						rob.do(toDo["toDo"], mot1, mot2)
+		else:
+			print ("color has to be yellow")
+start()
