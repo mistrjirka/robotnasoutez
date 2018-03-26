@@ -71,15 +71,16 @@ rob = robot()
 brickMotor = MM("outD")
 mot1 = LM("outC")
 mot2 = LM("outB")
-rob.do("right", mot1, mot2)
-rob.do("left", mot1, mot2)
-rob.do("forward", mot1, mot2)
-rob.do("backward", mot1, mot2)
+#~ rob.do("right", mot1, mot2)
+#~ rob.do("left", mot1, mot2)
+#~ rob.do("forward", mot1, mot2)
+#~ rob.do("backward", mot1, mot2)
 cs = CS()
 #~ cs.mode='RGB-RAW'
 def start():
 	while True:
 		if cs.color == 4:
+			rob.do("forward", mot1, mot2)
 			while True:
 				print(cs.color)
 				color = cs.color
