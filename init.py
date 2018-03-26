@@ -56,8 +56,13 @@ class robot:
 								self.greenCounter = self.greenCounter + 1
 								if self.greenCounter == 2:
 									self.greenCounter = 0
-									return {"toDo": i[toDo], "event": "brickDown"}								
-						return {"toDo": i["toDo"], "event": None}
+									self.colorBefore = color
+									return {"toDo": i[toDo], "event": "brickDown"}
+						if self.colorBefore != color:
+							self.colorBefore = color				
+							return {"toDo": i["toDo"], "event": None}
+						else:
+							return {'toDo': 'forward', 'event': None}
 	def brickDown(self, mot):
 		print("brickDown")
 		
