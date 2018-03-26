@@ -32,7 +32,7 @@ def motorControl (mot1, mot2, command = None):
 		else:
 			print(command)
 class robot:
-	def __init__(self, colorS = [{"val": [3,6], "toDo": "forward"},{"val": [2], "toDo": "right"},{"val": [5], "toDo": "left"}], dist = 300, turnLMP = [260, -260], turnRMP = [-260, 260]):
+	def __init__(self, colorS = [{"val": [3,6], "toDo": "forward"},{"val": [2], "toDo": "right"},{"val": [5], "toDo": "left"}], dist = 300, turnLMP = [290, -290], turnRMP = [-290, 290]):
 		self.commands = [{"direction":"right", "toDo": turnRMP, "type": "turn"}, {"direction":"left", "toDo": turnLMP, "type": "turn"}, {"direction":"backward", "toDo": dist * -1, "type":"go"}, {"direction":"forward", "toDo": dist, "type": "go"}]
 		self.colorSheet = colorS
 		self.greenCounter = 0
@@ -80,7 +80,7 @@ cs = CS()
 def start():
 	while True:
 		if cs.color == 4:
-			rob.do("forward", mot1, mot2)
+			cc
 			while True:
 				print(cs.color)
 				color = cs.color
