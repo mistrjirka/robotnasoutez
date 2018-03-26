@@ -32,7 +32,7 @@ def motorControl (mot1, mot2, command = None):
 		else:
 			print(command)
 class robot:
-	def __init__(self, colorS = [{"val": [3,6], "toDo": "forward"},{"val": [2], "toDo": "right"},{"val": [5], "toDo": "left"}], dist = 600, turnLMP = [240, -240], turnRMP = [-240, 240]):
+	def __init__(self, colorS = [{"val": [3,6], "toDo": "forward"},{"val": [2], "toDo": "right"},{"val": [5], "toDo": "left"}], dist = 300, turnLMP = [260, -260], turnRMP = [-260, 260]):
 		self.commands = [{"direction":"right", "toDo": turnRMP, "type": "turn"}, {"direction":"left", "toDo": turnLMP, "type": "turn"}, {"direction":"backward", "toDo": dist * -1, "type":"go"}, {"direction":"forward", "toDo": dist, "type": "go"}]
 		self.colorSheet = colorS
 		self.greenCounter = 0
@@ -71,15 +71,16 @@ rob = robot()
 brickMotor = MM("outD")
 mot1 = LM("outC")
 mot2 = LM("outB")
-rob.do("right", mot1, mot2)
-rob.do("left", mot1, mot2)
-rob.do("forward", mot1, mot2)
-rob.do("backward", mot1, mot2)
+#~ rob.do("right", mot1, mot2)
+#~ rob.do("left", mot1, mot2)
+#~ rob.do("forward", mot1, mot2)
+#~ rob.do("backward", mot1, mot2)
 cs = CS()
 #~ cs.mode='RGB-RAW'
 def start():
 	while True:
 		if cs.color == 4:
+			rob.do("forward", mot1, mot2)
 			while True:
 				print(cs.color)
 				color = cs.color
