@@ -80,7 +80,6 @@ cs = CS()
 def start():
 	while True:
 		if cs.color == 4:
-			cc
 			while True:
 				print(cs.color)
 				color = cs.color
