@@ -40,10 +40,10 @@ class Robot:
 				if i["direction"] == whatToDo:
 					self.motors[0].stop()
 					self.motors[1].stop()
-					self.dist = motors[0].position
+					self.dist = self.motors[0].position
 					self.motors[1].run_forever(speed_sp=i["toDo"])
 					self.motors[0].run_forever(speed_sp=i["toDo"])
-					while (motors[0].position - self.dist) < i["degreesDelay"]:
+					while (self.motors[0].position - self.dist) < i["degreesDelay"]:
 						sleep(0.01)
 					self.motors[0].stop()
 					self.motors[1].stop()
