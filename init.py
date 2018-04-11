@@ -38,7 +38,7 @@ class robot:
 		self.commands = [{"direction":"right", "toDo": turnRMP, "type": "turn"}, {"direction":"left", "toDo": turnLMP, "type": "turn"}, {"direction":"backward", "toDo": dist * -1, "type":"go"}, {"direction":"forward", "toDo": dist, "type": "go"}]
 		self.colorSheet = colorS
 		self.greenCounter = 0
-		self.colorBefore = None;
+		self.colorBefore = None
 	def do(self, whatToDo, mot1, mot2):
 		for i in self.commands:
 			
