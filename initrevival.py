@@ -93,6 +93,7 @@ ts = TS()
 #main loop
 def main():
 	mot1.run_forever(speed_sp = 700)
+	mot2.run_forever(speed_sp = 700)
 	while cs.color == 4:
 		sleep(0.02)
 	while True:
