@@ -83,7 +83,7 @@ mot1 = LM("outC")
 mot2 = LM("outB")
 
 #class init
-cache = cacheManager()
+cache = CacheManager()
 robot = Robot(motor1=mot1, motor2=mot2)
 
 #sensor init
