@@ -99,6 +99,7 @@ def main():
 	while True:
 		color = cs.color
 		toDo = robot.colorResponse(color)
+		print (toDo["event"])
 		if toDo["event"] is None:
 			robot.do(toDo["toDo"])
 		else:
