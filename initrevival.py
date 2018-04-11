@@ -41,8 +41,8 @@ class Robot:
 					self.motors[0].stop()
 					self.motors[1].stop()
 					self.dist = self.motors[0].position
-					self.motors[1].run_forever(speed_sp=i["toDo"])
-					self.motors[0].run_forever(speed_sp=i["toDo"])
+					self.motors[1].run_forever(speed_sp=i["toDo"][0])
+					self.motors[0].run_forever(speed_sp=i["toDo"][0])
 					while (self.motors[0].position - self.dist) < i["degreesDelay"]:
 						sleep(0.01)
 					self.motors[0].stop()
