@@ -46,5 +46,29 @@ class Robot:
 						self.motors[0].run_forever(speed_sp=i["toDo"])
 						self.motors[1].run_forever(speed_sp=i["toDo"])
 						cache.editCache(self.doCache, i["direction"])
+	def colorResponse(self, color):
+		if color == 0 or color == 1:
+			print ("robot is maybe not in the right place")
+		else:
+			for i in self.colorSheet:
+				for j in i["val"]:
+					if color == j:
+						if self.colorBefore != None:
+							if color == 3 and self.colorBefore != 3:
+								self.greenCounter = self.greenCounter + 1
+								if self.greenCounter == 2:
+									self.greenCounter = 0
+									self.colorBefore = color
+									return {"toDo": i["toDo"], "event": "brickDown"}
+						if self.colorBefore != color:
+							self.colorBefore = color				
+							return {"toDo": i["toDo"], "event": None}
+							
+						else:
+							return {'toDo': 'forward', 'event': None}
+	def brickDownEvent(self, motor = MM("outD"), degrees = 180, speed = 1400, stopAction = "hold"):
+		motor.run_to_rel_pos(position_sp=degrees, speed_sp=speed, stop_action=stopAction)
 
+#class init
 cache = cacheManager()
+robot = Robot()
