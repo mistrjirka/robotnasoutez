@@ -41,8 +41,8 @@ class Robot:
 					self.motors[0].stop()
 					self.motors[1].stop()
 					self.dist = self.motors[0].position
-					self.motors[1].run_forever(speed_sp=400)
-					self.motors[0].run_forever(speed_sp=400)
+					self.motors[1].run_forever(speed_sp=600)
+					self.motors[0].run_forever(speed_sp=600)
 					while (self.motors[0].position - self.dist) < i["degreesDelay"]:
 						print(str(self.motors[0].position) + " " + str(self.motors[0].position - self.dist))
 						sleep(0.02)
@@ -95,8 +95,8 @@ ts = TS()
 
 #main loop
 def main():
-	mot1.run_forever(speed_sp = 1400)
-	mot2.run_forever(speed_sp = 1400)
+	mot1.run_forever(speed_sp = 600)
+	mot2.run_forever(speed_sp = 600)
 	while cs.color == 4:
 		sleep(0.02)
 	mot1.stop()
