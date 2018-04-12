@@ -35,7 +35,7 @@ class Robot:
 		self.colorBefore = None
 		self.doCache = cache.addToCache(None)
 	def do(self, whatToDo):
-		if whatToDo != cache.getFromCache(self.doCache):
+		if whatToDo != self.doCache:
 			for i in self.commands:
 				if i["direction"] == whatToDo:
 					self.motors[0].stop()
@@ -95,8 +95,8 @@ ts = TS()
 
 #main loop
 def main():
-	mot1.run_forever(speed_sp = 700)
-	mot2.run_forever(speed_sp = 700)
+	mot1.run_forever(speed_sp = 1400)
+	mot2.run_forever(speed_sp = 1400)
 	while cs.color == 4:
 		sleep(0.02)
 	mot1.stop()
