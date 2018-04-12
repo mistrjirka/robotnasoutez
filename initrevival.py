@@ -105,14 +105,15 @@ def main():
 		color = cs.color
 		toDo = robot.colorResponse(color)
 		print(toDo)
-		print (toDo["event"])
-		if toDo["event"] is None:
-			robot.do(toDo["toDo"])
-		else:
-			robot.brickDownEvent()
-			robot.do(toDo["toDo"])
-		sleep(0.1)
-
+		if toDo is not None:
+			print (toDo["event"])
+			if toDo["event"] is None:
+				robot.do(toDo["toDo"])
+			else:
+				robot.brickDownEvent()
+				robot.do(toDo["toDo"])
+			sleep(0.1)
+	
 #wait for signal to start
 while True:
 	if cs.color == 4 and ts.value() == 1:
