@@ -112,7 +112,7 @@ def main():
 			else:
 				robot.brickDownEvent()
 				robot.do(toDo["toDo"])
-			sleep(0.1)
+			sleep(0.7)
 		else:
 			mot1.stop()
 			mot2.stop()
