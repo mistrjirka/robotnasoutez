@@ -41,18 +41,20 @@ class Robot:
 					self.motors[0].stop()
 					self.motors[1].stop()
 					self.dist = self.motors[0].position
-					self.motors[1].run_forever(speed_sp=i["toDo"][0])
-					self.motors[0].run_forever(speed_sp=i["toDo"][0])
+					self.motors[1].run_forever(speed_sp=400)
+					self.motors[0].run_forever(speed_sp=400)
 					while (self.motors[0].position - self.dist) < i["degreesDelay"]:
 						print(str(self.motors[0].position) + " " + str(self.motors[0].position - self.dist))
-						sleep(0.01)
+						sleep(0.02)
 					self.motors[0].stop()
 					self.motors[1].stop()
 					if type(i["toDo"]).__name__ is "list":
+						print(i["toDo"])
 						self.motors[0].run_to_rel_pos(position_sp=i["toDo"][0], speed_sp=600, stop_action="hold")
 						self.motors[1].run_to_rel_pos(position_sp=i["toDo"][1], speed_sp=600, stop_action="hold")
 						cache.editCache(self.doCache, i["direction"])
 					else:
+						print(i["toDo"])
 						self.motors[0].run_forever(speed_sp=i["toDo"])
 						self.motors[1].run_forever(speed_sp=i["toDo"])
 						cache.editCache(self.doCache, i["direction"])
