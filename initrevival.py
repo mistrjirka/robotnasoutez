@@ -96,6 +96,8 @@ def main():
 	mot2.run_forever(speed_sp = 700)
 	while cs.color == 4:
 		sleep(0.02)
+	mot1.stop()
+	mot2.stop()
 	while True:
 		color = cs.color
 		toDo = robot.colorResponse(color)
