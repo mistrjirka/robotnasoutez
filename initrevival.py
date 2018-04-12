@@ -78,7 +78,7 @@ class Robot:
 							
 						else:
 							return {'toDo': 'forward', 'event': None}
-	def brickDownEvent(self, motor = MM("outD"), degrees = 180, speed = 1400, stopAction = "hold"):
+	def brickDownEvent(self, motor = MM("outD"), degrees = 360, speed = 1400, stopAction = "hold"):
 		motor.run_to_rel_pos(position_sp=degrees, speed_sp=speed, stop_action=stopAction)
 
 #motor init
