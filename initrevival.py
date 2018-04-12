@@ -103,16 +103,15 @@ def main():
 	mot2.stop()
 	while True:
 		color = cs.color
+		print(color)
 		toDo = robot.colorResponse(color)
-		print(toDo)
 		if toDo is not None:
-			print (toDo["event"])
 			if toDo["event"] is None:
 				robot.do(toDo["toDo"])
 			else:
 				robot.brickDownEvent()
 				robot.do(toDo["toDo"])
-			sleep(0.7)
+			sleep(0.25)
 		else:
 			mot1.stop()
 			mot2.stop()
