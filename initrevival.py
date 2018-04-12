@@ -113,7 +113,9 @@ def main():
 				robot.brickDownEvent()
 				robot.do(toDo["toDo"])
 			sleep(0.1)
-	
+		else:
+			mot1.stop()
+			mot2.stop()
 #wait for signal to start
 while True:
 	if cs.color == 4 and ts.value() == 1:
