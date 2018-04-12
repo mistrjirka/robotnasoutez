@@ -48,7 +48,7 @@ class Robot:
 						sleep(0.02)
 					self.motors[0].stop()
 					self.motors[1].stop()
-					if type(i["toDo"]).__name__ is "list":
+					if str(type(i["toDo"]).__name__) is "list":
 						print(str(i["toDo"]) +" "+ str(type(i["toDo"]).__name__))
 						self.motors[0].run_to_rel_pos(position_sp=i["toDo"][0], speed_sp=600, stop_action="hold")
 						self.motors[1].run_to_rel_pos(position_sp=i["toDo"][1], speed_sp=600, stop_action="hold")
