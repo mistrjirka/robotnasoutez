@@ -52,12 +52,12 @@ class Robot:
 						print(str(i["toDo"]) +" "+ str(type(i["toDo"]).__name__))
 						self.motors[0].run_to_rel_pos(position_sp=i["toDo"][0], speed_sp=600, stop_action="hold")
 						self.motors[1].run_to_rel_pos(position_sp=i["toDo"][1], speed_sp=600, stop_action="hold")
-						cache.editCache(self.doCache, i["direction"])
+						self.doCache = i["direction"]
 					else:
 						print(str(i["toDo"]) +" "+ str(type(i["toDo"]).__name__))
 						self.motors[0].run_forever(speed_sp=i["toDo"])
 						self.motors[1].run_forever(speed_sp=i["toDo"])
-						cache.editCache(self.doCache, i["direction"])
+						self.doCache = i["direction"]
 	def colorResponse(self, color):
 		if color == 0 or color == 1:
 			print ("robot is maybe not in the right place")
