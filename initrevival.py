@@ -114,6 +114,6 @@ def main():
 
 #wait for signal to start
 while True:
-	if cs.color == 4 or ts.value() == 1:
+	if cs.color == 4 and ts.value() == 1:
 		main()
 		break
