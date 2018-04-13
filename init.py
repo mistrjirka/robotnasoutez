@@ -5,7 +5,7 @@ from ev3dev.ev3 import TouchSensor as TS
 
 import time
 
-def getColorFromRaw(colorsnsr, colorResponse=[4,5,6,2,3], colorSheet=[[[160,250],[165,270],[50,85]],[[190,270],[30,43],[196,251]],[[200,250],[280,335],[180,287]],[[20,60],[42,72],[20,60]], [[20, 30],[90,260],[13,77]]]):
+def getColorFromRaw(colorsnsr, colorResponse=[4,5,6,2,3], colorSheet=[[[160,250],[165,270],[50,85]],[[190,270],[30,43],[196,251]],[[200,250],[280,335],[180,287]],[[20,60],[42,72],[20,60]], [[15, 30],[90,260],[13,77]]]):
 	
 	values = [0,0,0]
 	values[0] = colorsnsr.value(0)
