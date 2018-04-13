@@ -50,7 +50,7 @@ class Robot:
 		self.doCache = cache.addToCache(None)
 	def do(self, whatToDo):
 		global motorAreRunning
-		if whatToDo != self.doCache and motorAreRunning == False:
+		if whatToDo != self.doCache or motorAreRunning == False:
 			for i in self.commands:
 				if i["direction"] == whatToDo:
 					self.motors[0].stop()
