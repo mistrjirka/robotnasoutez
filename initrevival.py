@@ -115,8 +115,11 @@ def main():
 	mot2.run_forever(speed_sp = 600)
 	while getColorFromRaw(cs) == 4:
 		sleep(0.03)
+		print ("ještě ne" + str(getColorFromRaw(cs)))
+	print("už!!!")
 	mot1.stop()
 	mot2.stop()
+	
 	while True:
 		color = getColorFromRaw(cs)
 		print(color)
