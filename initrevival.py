@@ -26,6 +26,17 @@ class CacheManager:
 			if i["key"] == key:
 				self.cache[i] = {"key": i["key"], "data": data} 
 
+def getColorFromRaw(colorsnsr, colorResponse=[4,5,6,2,3], colorSheet=[[[210,250],[165,270],[210,255]],[[190,270],[30,43],[196,251]],[[210,250],[310,335],[215,237]],[[20,60],[42,210],[20,60]], [[70,160],[90,260],[13,77]]]):
+	
+	values = [0,0,0]
+	values[0] = colorsnsr.value(0)
+	values[1] = colorsnsr.value(1)
+	values[2] = colorsnsr.value(2)
+	index = 0
+	for i in colorSheet:
+		if values[0] in range(i[0][0], i[0][1]) and values[1] in range(i[1][0], i[1][1]) and values[2] in range(i[2][0], i[2][1]):
+			return colorResponse[index]
+			index = index + 1
 class Robot:
 	def __init__(self, commands = [{"direction":"right", "toDo": [-100, 100], "degreesDelay": 100}, {"direction":"left", "toDo": [100, -100], "degreesDelay": 100}, {"direction":"backward", "toDo": 600 * -1, "degreesDelay": 100}, {"direction":"forward", "toDo": 600, "degreesDelay": 100}], colorS = [{"val": [3,6], "toDo": "forward"}, {"val": [2], "toDo": "right"}, {"val": [5], "toDo": "left"}], motor1 = LM("outC"), motor2 = LM("outB")):
 		self.commands = commands
@@ -97,12 +108,12 @@ ts = TS()
 def main():
 	mot1.run_forever(speed_sp = 600)
 	mot2.run_forever(speed_sp = 600)
-	while cs.color == 4:
+	while getColoRaw(cs) == 4:
 		sleep(0.02)
 	mot1.stop()
 	mot2.stop()
 	while True:
-		color = cs.color
+		color = getColoRaw(cs)
 		print(color)
 		toDo = robot.colorResponse(color)
 		if toDo is not None:
@@ -117,6 +128,6 @@ def main():
 			mot2.stop()
 #wait for signal to start
 while True:
-	if cs.color == 4 and ts.value() == 1:
+	if getColoRaw(cs) == 4 and ts.value() == 1:
 		main()
 		break
