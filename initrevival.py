@@ -38,7 +38,7 @@ def getColorFromRaw(colorsnsr, colorResponse=[4,5,6,2,3], colorSheet=[[[210,250]
 		if values[0] in range(i[0][0], i[0][1]) and values[1] in range(i[1][0], i[1][1]) and values[2] in range(i[2][0], i[2][1]):
 			print("succes" + str(colorResponse[index]))
 			return colorResponse[index]
-			index = index + 1
+		index = index + 1
 class Robot:
 	def __init__(self, commands = [{"direction":"right", "toDo": [-100, 100], "degreesDelay": 100}, {"direction":"left", "toDo": [100, -100], "degreesDelay": 100}, {"direction":"backward", "toDo": 600 * -1, "degreesDelay": 100}, {"direction":"forward", "toDo": 600, "degreesDelay": 100}], colorS = [{"val": [3,6], "toDo": "forward"}, {"val": [2], "toDo": "right"}, {"val": [5], "toDo": "left"}], motor1 = LM("outC"), motor2 = LM("outB")):
 		self.commands = commands
