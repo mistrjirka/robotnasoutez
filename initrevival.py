@@ -65,6 +65,9 @@ class Robot:
 						print(str(i["toDo"]) +" "+ str(type(i["toDo"]).__name__))
 						self.motors[0].run_to_rel_pos(position_sp=i["toDo"][0], speed_sp=600, stop_action="hold")
 						self.motors[1].run_to_rel_pos(position_sp=i["toDo"][1], speed_sp=600, stop_action="hold")
+						for j in i["toDo"]:
+							if j > 0:
+								sleep(j/500)
 						self.doCache = i["direction"]
 					else:
 						print(str(i["toDo"]) +" "+ str(type(i["toDo"]).__name__))
