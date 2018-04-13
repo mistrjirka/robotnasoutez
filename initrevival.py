@@ -34,7 +34,9 @@ def getColorFromRaw(colorsnsr, colorResponse=[4,5,6,2,3], colorSheet=[[[210,250]
 	values[2] = colorsnsr.value(2)
 	index = 0
 	for i in colorSheet:
+		print(index)
 		if values[0] in range(i[0][0], i[0][1]) and values[1] in range(i[1][0], i[1][1]) and values[2] in range(i[2][0], i[2][1]):
+			print("succes" + str(colorResponse[index]))
 			return colorResponse[index]
 			index = index + 1
 class Robot:
@@ -86,7 +88,6 @@ class Robot:
 						if self.colorBefore != color:
 							self.colorBefore = color
 							return {"toDo": i["toDo"], "event": None}
-							
 						else:
 							return {'toDo': 'forward', 'event': None}
 	def brickDownEvent(self, motor = MM("outD"), degrees = 360, speed = 1400, stopAction = "hold"):
