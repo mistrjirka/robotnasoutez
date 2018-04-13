@@ -49,7 +49,7 @@ def motorControl (mot1, mot2, command = None):
 		else:
 			print(command)
 class robot:
-	def __init__(self, colorS = [{"val": [3,6], "toDo": "forward"},{"val": [2], "toDo": "right"},{"val": [5], "toDo": "left"}], dist = 300, turnLMP = [160, -160], turnRMP = [-160, 160]):
+	def __init__(self, colorS = [{"val": [3,6], "toDo": "forward"},{"val": [2], "toDo": "right"},{"val": [5], "toDo": "left"}], dist = 300, turnLMP = [170, -170], turnRMP = [-170, 170]):
 		self.commands = [{"direction":"right", "toDo": turnRMP, "type": "turn"}, {"direction":"left", "toDo": turnLMP, "type": "turn"}, {"direction":"backward", "toDo": dist * -1, "type":"go"}, {"direction":"forward", "toDo": dist, "type": "go"}]
 		self.colorSheet = colorS
 		self.greenCounter = 0
