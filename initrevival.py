@@ -49,6 +49,7 @@ class Robot:
 		self.colorBefore = None
 		self.doCache = cache.addToCache(None)
 	def do(self, whatToDo):
+		global motorAreRunning
 		if whatToDo != self.doCache and motorAreRunning == False:
 			for i in self.commands:
 				if i["direction"] == whatToDo:
