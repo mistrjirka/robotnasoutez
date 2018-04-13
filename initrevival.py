@@ -26,7 +26,7 @@ class CacheManager:
 			if i["key"] == key:
 				self.cache[i] = {"key": i["key"], "data": data} 
 
-def getColorFromRaw(colorsnsr, colorResponse=[4,5,6,2,3], colorSheet=[[[160,250],[165,270],[50,85]],[[150,200],[20,43],[15,30]],[[200,250],[280,335],[180,287]],[[20,60],[40,72],[20,60]], [[15, 30],[90,260],[13,77]]]):
+def getColorFromRaw(colorsnsr, colorResponse=[4,5,6,2,3], colorSheet=[[[160,250],[165,270],[50,85]],[[150,1000],[20,43],[15,30]],[[200,1000],[280,1000],[180,1000]],[[20,60],[40,72],[20,1000]], [[15, 30],[90,1000],[13,77]]]):
 	
 	values = [0,0,0]
 	values[0] = colorsnsr.value(0)
@@ -39,6 +39,7 @@ def getColorFromRaw(colorsnsr, colorResponse=[4,5,6,2,3], colorSheet=[[[160,250]
 			print("succes" + str(colorResponse[index]))
 			return colorResponse[index]
 		index = index + 1
+
 class Robot:
 	def __init__(self, commands = [{"direction":"right", "toDo": [-170, 170], "degreesDelay": 50}, {"direction":"left", "toDo": [170, -170], "degreesDelay": 50}, {"direction":"backward", "toDo": 600 * -1, "degreesDelay": 50}, {"direction":"forward", "toDo": 600, "degreesDelay": 50}], colorS = [{"val": [3,6], "toDo": "forward"}, {"val": [2], "toDo": "right"}, {"val": [5], "toDo": "left"}], motor1 = LM("outC"), motor2 = LM("outB")):
 		self.commands = commands
