@@ -108,12 +108,12 @@ ts = TS()
 def main():
 	mot1.run_forever(speed_sp = 600)
 	mot2.run_forever(speed_sp = 600)
-	while getColoRaw(cs) == 4:
+	while getColorRaw(cs) == 4:
 		sleep(0.02)
 	mot1.stop()
 	mot2.stop()
 	while True:
-		color = getColoRaw(cs)
+		color = getColorRaw(cs)
 		print(color)
 		toDo = robot.colorResponse(color)
 		if toDo is not None:
@@ -128,6 +128,6 @@ def main():
 			mot2.stop()
 #wait for signal to start
 while True:
-	if getColoRaw(cs) == 4 and ts.value() == 1:
+	if getColorRaw(cs) == 4 and ts.value() == 1:
 		main()
 		break
