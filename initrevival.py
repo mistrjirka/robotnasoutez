@@ -49,23 +49,27 @@ class Robot:
 		self.colorBefore = None
 		self.doCache = cache.addToCache(None)
 	def do(self, whatToDo):
-		if whatToDo != self.doCache:
+		if whatToDo != self.doCache and motorAreRunning == False:
 			for i in self.commands:
 				if i["direction"] == whatToDo:
 					self.motors[0].stop()
 					self.motors[1].stop()
+					motorAreRunning = False
 					self.dist = self.motors[0].position
 					self.motors[1].run_forever(speed_sp=600)
 					self.motors[0].run_forever(speed_sp=600)
+					motorAreRunning = True
 					while (self.motors[0].position - self.dist) < i["degreesDelay"]:
 						print(str(self.motors[0].position) + " " + str(self.motors[0].position - self.dist))
 						sleep(0.02)
 					self.motors[0].stop()
 					self.motors[1].stop()
+					motorAreRunning = False
 					if str(type(i["toDo"]).__name__) == "list":
 						print(str(i["toDo"]) +" "+ str(type(i["toDo"]).__name__))
 						self.motors[0].run_to_rel_pos(position_sp=i["toDo"][0], speed_sp=600, stop_action="hold")
 						self.motors[1].run_to_rel_pos(position_sp=i["toDo"][1], speed_sp=600, stop_action="hold")
+						motorAreRunning = True
 						for j in i["toDo"]:
 							if j > 0:
 								sleep(j/500)
@@ -74,6 +78,7 @@ class Robot:
 						print(str(i["toDo"]) +" "+ str(type(i["toDo"]).__name__))
 						self.motors[0].run_forever(speed_sp=i["toDo"])
 						self.motors[1].run_forever(speed_sp=i["toDo"])
+						motorAreRunning = True
 						self.doCache = i["direction"]
 	def colorResponse(self, color):
 		if color == 0 or color == 1:
@@ -109,8 +114,10 @@ robot = Robot(motor1=mot1, motor2=mot2)
 cs = CS()
 ts = TS()
 
+motorAreRunning = False
 #main loop
 def main():
+	motorAreRunning = True
 	mot1.run_forever(speed_sp = 600)
 	mot2.run_forever(speed_sp = 600)
 	while getColorFromRaw(cs) == 4:
@@ -119,6 +126,7 @@ def main():
 	print("uz!!!")
 	mot1.stop()
 	mot2.stop()
+	motorAreRunning = False
 	
 	while True:
 		color = getColorFromRaw(cs)
@@ -133,6 +141,7 @@ def main():
 		else:
 			mot1.stop()
 			mot2.stop()
+			motorAreRunning = False
 		sleep(0.25)
 #wait for signal to start
 while True:
