@@ -26,7 +26,7 @@ class CacheManager:
 			if i["key"] == key:
 				self.cache[i] = {"key": i["key"], "data": data} 
 
-def getColorFromRaw(colorsnsr, colorResponse=[4,5,6,2,3], colorSheet=[[[210,250],[165,270],[210,255]],[[190,270],[30,43],[196,251]],[[210,250],[310,335],[215,237]],[[20,60],[42,210],[20,60]], [[70,160],[90,260],[13,77]]]):
+def getColorFromRaw(colorsnsr, colorResponse=[4,5,6,2,3], colorSheet=[[[210,250],[165,270],[50,85]],[[190,270],[30,43],[196,251]],[[210,250],[310,335],[215,237]],[[20,60],[42,210],[20,60]], [[70,160],[90,260],[13,77]]]):
 	
 	values = [0,0,0]
 	values[0] = colorsnsr.value(0)
@@ -34,7 +34,7 @@ def getColorFromRaw(colorsnsr, colorResponse=[4,5,6,2,3], colorSheet=[[[210,250]
 	values[2] = colorsnsr.value(2)
 	index = 0
 	for i in colorSheet:
-		print(str(index)+ " " +str(values))
+		print(str(index)+ " " +str(values) + str(i[]))
 		if values[0] in range(i[0][0], i[0][1]) and values[1] in range(i[1][0], i[1][1]) and values[2] in range(i[2][0], i[2][1]):
 			print("succes" + str(colorResponse[index]))
 			return colorResponse[index]
