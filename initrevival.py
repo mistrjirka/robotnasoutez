@@ -81,6 +81,8 @@ class Robot:
 						self.motors[1].run_forever(speed_sp=i["toDo"])
 						motorAreRunning = True
 						self.doCache = i["direction"]
+		else:
+			print(motorAreRunning)
 	def colorResponse(self, color):
 		if color == 0 or color == 1:
 			print ("robot is maybe not in the right place")
