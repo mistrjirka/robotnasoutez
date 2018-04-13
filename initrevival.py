@@ -123,10 +123,10 @@ def main():
 			else:
 				robot.brickDownEvent()
 				robot.do(toDo["toDo"])
-			sleep(0.25)
 		else:
 			mot1.stop()
 			mot2.stop()
+		sleep(0.25)
 #wait for signal to start
 while True:
 	if getColorFromRaw(cs) == 4 and ts.value() == 1:
