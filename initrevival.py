@@ -116,7 +116,7 @@ def main():
 	while getColorFromRaw(cs) == 4:
 		sleep(0.03)
 		print ("ještě ne" + str(getColorFromRaw(cs)))
-	print("už!!!")
+	print("uz!!!")
 	mot1.stop()
 	mot2.stop()
 	
