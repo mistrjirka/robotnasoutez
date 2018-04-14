@@ -129,9 +129,6 @@ def main():
 		sleep(0.03)
 		print ("jeste ne" + str(getColorFromRaw(cs)))
 	print("uz!!!")
-	mot1.stop()
-	mot2.stop()
-	motorAreRunning = False
 	
 	while True:
 		color = getColorFromRaw(cs)
