@@ -27,7 +27,7 @@ class CacheManager:
 				self.cache[i] = {"key": i["key"], "data": data} 
 
 def getColorFromRaw(colorsnsr, colorResponse=[4,5,6,2,3], colorSheet=[[[160,250],[165,270],[50,85]],[[150,1000],[20,43],[15,30]],[[200,1000],[280,1000],[180,1000]],[[20,60],[40,72],[20,1000]], [[15, 30],[90,1000],[13,77]]]):
-	
+	colorsnsr.mode = "RGB-RAW"
 	values = [0,0,0]
 	values[0] = colorsnsr.value(0)
 	values[1] = colorsnsr.value(1)
@@ -148,6 +148,6 @@ def main():
 		sleep(0.25)
 #wait for signal to start
 while True:
-	if getColorFromRaw(cs) == 4 and ts.value() == 1:
+	if getColorFromRaw(cs) == 4 or ts.value() == 1:
 		main()
 		break
