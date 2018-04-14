@@ -121,6 +121,7 @@ motorAreRunning = False
 #main loop
 def main():
 	global motorAreRunning
+	history = 4
 	motorAreRunning = True
 	mot1.run_forever(speed_sp = 300)
 	mot2.run_forever(speed_sp = 300)
@@ -142,11 +143,21 @@ def main():
 			else:
 				robot.do(toDo["toDo"])
 				robot.brickDownEvent()
+		else if history == 4:
+			mot1.run_forever(speed_sp = 300)
+			mot2.run_forever(speed_sp = 300)
+			motorAreRunning = True
+			while getColorFromRaw(cs) != 4:
+				sleep(0.03)
+			mot1.stop()
+			mot2.stop()
+			motorAreRunning = False
 		else:
 			mot1.stop()
 			mot2.stop()
 			motorAreRunning = False
 		sleep(0.25)
+		history = color
 #wait for signal to start
 while True:
 	if getColorFromRaw(cs) == 4 or ts.value() == 1:
