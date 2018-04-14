@@ -123,8 +123,8 @@ def main():
 	global motorAreRunning
 	history = 4
 	motorAreRunning = True
-	mot1.run_forever(speed_sp = 600)
-	mot2.run_forever(speed_sp = 600)
+	mot1.run_forever(speed_sp = 500)
+	mot2.run_forever(speed_sp = 500)
 	while getColorFromRaw(cs) == 4:
 		sleep(0.03)
 		print ("jeste ne" + str(getColorFromRaw(cs)))
