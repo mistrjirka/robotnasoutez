@@ -41,7 +41,7 @@ def getColorFromRaw(colorsnsr, colorResponse=[4,5,6,2,3], colorSheet=[[[160,290]
 		index = index + 1
 
 class Robot:
-	def __init__(self, commands = [{"direction":"right", "toDo": [-205, 205], "degreesDelay": 50}, {"direction":"left", "toDo": [205, -205], "degreesDelay": 50}, {"direction":"backward", "toDo": 600 * -1, "degreesDelay": 50}, {"direction":"forward", "toDo": 600, "degreesDelay": 50}], colorS = [{"val": [3,6], "toDo": "forward"}, {"val": [2], "toDo": "right"}, {"val": [5], "toDo": "left"}], motor1 = LM("outC"), motor2 = LM("outB")):
+	def __init__(self, commands = [{"direction":"right", "toDo": [-200, 200], "degreesDelay": 50}, {"direction":"left", "toDo": [200, -200], "degreesDelay": 50}, {"direction":"backward", "toDo": 600 * -1, "degreesDelay": 50}, {"direction":"forward", "toDo": 600, "degreesDelay": 50}], colorS = [{"val": [3,6], "toDo": "forward"}, {"val": [2], "toDo": "right"}, {"val": [5], "toDo": "left"}], motor1 = LM("outC"), motor2 = LM("outB")):
 		self.commands = commands
 		self.motors = [motor1, motor2]
 		self.colorSheet = colorS
