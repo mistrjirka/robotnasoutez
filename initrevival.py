@@ -139,8 +139,8 @@ def main():
 			if toDo["event"] is None:
 				robot.do(toDo["toDo"])
 			else:
-				robot.brickDownEvent()
 				robot.do(toDo["toDo"])
+				robot.brickDownEvent()
 		else:
 			mot1.stop()
 			mot2.stop()
