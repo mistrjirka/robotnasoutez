@@ -26,7 +26,7 @@ class CacheManager:
 			if i["key"] == key:
 				self.cache[i] = {"key": i["key"], "data": data} 
 
-def getColorFromRaw(colorsnsr, colorResponse=[4,5,6,2,3], colorSheet=[[[160,290],[155,270],[45,85]],[[150,1000],[20,43],[15,30]],[[200,1000],[280,1000],[180,1000]],[[20,60],[40,72],[20,1000]], [[15, 30],[90,1000],[13,77]]]):
+def getColorFromRaw(colorsnsr, colorResponse=[4,5,6,2,3], colorSheet=[[[160,290],[138,270],[45,85]],[[150,1000],[20,43],[15,30]],[[200,1000],[280,1000],[180,1000]],[[20,60],[40,72],[20,1000]], [[15, 30],[90,1000],[13,77]]]):
 	colorsnsr.mode = "RGB-RAW"
 	values = [0,0,0]
 	values[0] = colorsnsr.value(0)
