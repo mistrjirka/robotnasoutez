@@ -41,13 +41,13 @@ def getColorFromRaw(colorsnsr, colorResponse=[4,5,6,2,3], colorSheet=[[[160,250]
 		index = index + 1
 
 class Robot:
-	def __init__(self, commands = [{"direction":"right", "toDo": [-200, 200], "degreesDelay": 100}, {"direction":"left", "toDo": [200, -200], "degreesDelay": 100}, {"direction":"backward", "toDo": 300 * -1, "degreesDelay": 100}, {"direction":"forward", "toDo": 300, "degreesDelay": 100}], colorS = [{"val": [3,6], "toDo": "forward"}, {"val": [2], "toDo": "right"}, {"val": [5], "toDo": "left"}], motor1 = LM("outC"), motor2 = LM("outB")):
+	def __init__(self, commands = [{"direction":"right", "toDo": [-200, 200], "degreesDelay": 100}, {"direction":"left", "toDo": [200, -200], "degreesDelay": 100}, {"direction":"backward", "toDo": 600 * -1, "degreesDelay": 100}, {"direction":"forward", "toDo": 600, "degreesDelay": 100}], colorS = [{"val": [3,6], "toDo": "forward"}, {"val": [2], "toDo": "right"}, {"val": [5], "toDo": "left"}], motor1 = LM("outC"), motor2 = LM("outB")):
 		self.commands = commands
 		self.motors = [motor1, motor2]
 		self.colorSheet = colorS
 		self.greenCounter = 0
 		self.colorBefore = None
-		self.doCache = cache.addToCache(None)
+		self.doCache = None
 	def do(self, whatToDo):
 		global motorAreRunning
 		if whatToDo != self.doCache or motorAreRunning == False:
@@ -57,8 +57,8 @@ class Robot:
 					self.motors[1].stop()
 					motorAreRunning = False
 					self.dist = self.motors[0].position
-					self.motors[1].run_forever(speed_sp=300)
-					self.motors[0].run_forever(speed_sp=300)
+					self.motors[1].run_forever(speed_sp=600)
+					self.motors[0].run_forever(speed_sp=600)
 					motorAreRunning = True
 					while (self.motors[0].position - self.dist) < i["degreesDelay"]:
 						print(str(self.motors[0].position) + " " + str(self.motors[0].position - self.dist))
@@ -68,8 +68,8 @@ class Robot:
 					motorAreRunning = False
 					if str(type(i["toDo"]).__name__) == "list":
 						print(str(i["toDo"]) +" "+ str(type(i["toDo"]).__name__))
-						self.motors[0].run_to_rel_pos(position_sp=i["toDo"][0], speed_sp=300, stop_action="hold")
-						self.motors[1].run_to_rel_pos(position_sp=i["toDo"][1], speed_sp=300, stop_action="hold")
+						self.motors[0].run_to_rel_pos(position_sp=i["toDo"][0], speed_sp=600, stop_action="hold")
+						self.motors[1].run_to_rel_pos(position_sp=i["toDo"][1], speed_sp=600, stop_action="hold")
 						motorAreRunning = True
 						for j in i["toDo"]:
 							if j > 0:
