@@ -120,6 +120,7 @@ ts = TS()
 motorAreRunning = False
 #main loop
 def main():
+	global motorAreRunning
 	motorAreRunning = True
 	mot1.run_forever(speed_sp = 300)
 	mot2.run_forever(speed_sp = 300)
