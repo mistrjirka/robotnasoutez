@@ -136,7 +136,8 @@ def main():
 		toDo = robot.colorResponse(color)
 		if toDo is not None:
 			history = "start"
-			motorAreRunning = False
+			if history == "stop": 
+				motorAreRunning = False
 			if toDo["event"] is None:
 				robot.do(toDo["toDo"])
 			else:
