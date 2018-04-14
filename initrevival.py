@@ -143,7 +143,7 @@ def main():
 			else:
 				robot.do(toDo["toDo"])
 				robot.brickDownEvent()
-		else if history == 4:
+		elif history == 4:
 			mot1.run_forever(speed_sp = 300)
 			mot2.run_forever(speed_sp = 300)
 			motorAreRunning = True
