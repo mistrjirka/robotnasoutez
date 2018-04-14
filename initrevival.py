@@ -123,8 +123,8 @@ def main():
 	global motorAreRunning
 	history = 4
 	motorAreRunning = True
-	mot1.run_forever(speed_sp = 300)
-	mot2.run_forever(speed_sp = 300)
+	mot1.run_forever(speed_sp = 600)
+	mot2.run_forever(speed_sp = 600)
 	while getColorFromRaw(cs) == 4:
 		sleep(0.03)
 		print ("jeste ne" + str(getColorFromRaw(cs)))
@@ -144,8 +144,8 @@ def main():
 				robot.do(toDo["toDo"])
 				robot.brickDownEvent()
 		elif history == 4:
-			mot1.run_forever(speed_sp = 300)
-			mot2.run_forever(speed_sp = 300)
+			mot1.run_forever(speed_sp = 600)
+			mot2.run_forever(speed_sp = 600)
 			motorAreRunning = True
 			while getColorFromRaw(cs) != 4:
 				sleep(0.03)
