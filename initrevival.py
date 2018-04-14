@@ -143,6 +143,9 @@ def main():
 			else:
 				robot.do(toDo["toDo"])
 				robot.brickDownEvent()
+		else:
+			mot1.stop()
+			mot2.stop()
 		"""elif history == 4:
 			mot1.run_forever(speed_sp = 600)
 			mot2.run_forever(speed_sp = 600)
@@ -156,9 +159,7 @@ def main():
 			mot1.stop()
 			mot2.stop()
 			motorAreRunning = False"""
-		else:
-			mot1.stop()
-			mot2.stop()
+		
 		sleep(0.25)
 		history = color
 #wait for signal to start
