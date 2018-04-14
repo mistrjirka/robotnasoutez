@@ -135,12 +135,15 @@ def main():
 		print(color)
 		toDo = robot.colorResponse(color)
 		if toDo is not None:
+			history = "start"
+			motorAreRunning = False
 			if toDo["event"] is None:
 				robot.do(toDo["toDo"])
 			else:
 				robot.do(toDo["toDo"])
 				robot.brickDownEvent()
 		else:
+			history = "stop"
 			mot1.stop()
 			mot2.stop()
 		"""elif history == 4:
@@ -158,7 +161,6 @@ def main():
 			motorAreRunning = False"""
 		
 		sleep(0.25)
-		history = color
 #wait for signal to start
 while True:
 	if getColorFromRaw(cs) == 4 or ts.value() == 1:
