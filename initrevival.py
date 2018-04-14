@@ -73,7 +73,7 @@ class Robot:
 						motorAreRunning = True
 						for j in i["toDo"]:
 							if j > 0:
-								sleep(j/400)
+								sleep(j/300)
 						self.doCache = i["direction"]
 					else:
 						print(str(i["toDo"]) +" "+ str(type(i["toDo"]).__name__))
