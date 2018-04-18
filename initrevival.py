@@ -147,9 +147,13 @@ def main():
 				robot.brickDownEvent()
 		else:
 			if getColorFromRaw(cs) != 4:
-				while getColorFromRaw(cs) != None:
+				while getColorFromRaw(cs) == None:
 					mot1.run_forever(speed_sp = 500)
 					mot2.run_forever(speed_sp = 500)
+					
+			else:
+				mot1.stop()
+				mot2.stop()
 	
 		"""elif history == 4:
 			mot1.run_forever(speed_sp = 600)
