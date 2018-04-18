@@ -123,7 +123,6 @@ history = "stop"
 def main():
 	global history
 	global motorAreRunning
-	history = 4
 	motorAreRunning = True
 	mot1.run_forever(speed_sp = 500)
 	mot2.run_forever(speed_sp = 500)
@@ -139,7 +138,6 @@ def main():
 		toDo = robot.colorResponse(color)
 		print (history)
 		if toDo is not None:
-			global history
 			history = "start"
 			if history == "stop": 
 				motorAreRunning = False
@@ -149,7 +147,6 @@ def main():
 				robot.do(toDo["toDo"])
 				robot.brickDownEvent()
 		else:
-			global history
 			history = "stop"
 			mot1.stop()
 			mot2.stop()
