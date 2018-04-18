@@ -53,8 +53,8 @@ class Robot:
 		if whatToDo != self.doCache or motorAreRunning == False:
 			for i in self.commands:
 				if i["direction"] == whatToDo:
-					self.motors[0].stop()
-					self.motors[1].stop()
+					#~ self.motors[0].stop()
+					#~ self.motors[1].stop()
 					motorAreRunning = False
 					self.dist = self.motors[0].position
 					self.motors[1].run_forever(speed_sp=500)
