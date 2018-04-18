@@ -137,6 +137,7 @@ def main():
 		print(color)
 		history = "stop"
 		toDo = robot.colorResponse(color)
+		print (history)
 		if toDo is not None:
 			global history
 			history = "start"
