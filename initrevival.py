@@ -119,7 +119,9 @@ ts = TS()
 
 motorAreRunning = False
 #main loop
+history = "stop"
 def main():
+	global history
 	global motorAreRunning
 	history = 4
 	motorAreRunning = True
