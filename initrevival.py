@@ -96,14 +96,16 @@ class Robot:
 							self.greenCounter = self.greenCounter + 1
 							if self.greenCounter == 2:
 								self.greenCounter = 0
-							self.colorBefore = color
-							return {"toDo": i["toDo"], "event": "brickDown"}
+								self.colorBefore = color
+								return {"toDo": i["toDo"], "event": "brickDown"}
 						if self.colorBefore != color:
 							print(color)
 							self.colorBefore = color
 							return {"toDo": i["toDo"], "event": None}
 						else:
+							self.colorBefore = color
 							return {'toDo': 'forward', 'event': None}
+						self.colorBefore = color
 	def brickDownEvent(self, motor = MM("outD"), degrees = 360, speed = 1400, stopAction = "hold"):
 		motor.run_to_rel_pos(position_sp=degrees, speed_sp=speed, stop_action=stopAction)
 
