@@ -95,7 +95,7 @@ class Robot:
 							self.greenCounter = self.greenCounter + 1
 							if self.greenCounter == 2:
 								self.greenCounter = 0
-								self.colorBefore = color
+							self.colorBefore = color
 							return {"toDo": i["toDo"], "event": "brickDown"}
 						if self.colorBefore != color:
 							print(color)
