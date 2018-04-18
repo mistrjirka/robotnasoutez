@@ -91,7 +91,7 @@ class Robot:
 				for j in i["val"]:
 					if color == j:
 						if color == 3 and self.colorBefore != 3:
-							print(self.colorBefore)
+							print(self.colorBefore, color)
 							self.greenCounter = self.greenCounter + 1
 							if self.greenCounter == 2:
 								self.greenCounter = 0
