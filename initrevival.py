@@ -90,14 +90,13 @@ class Robot:
 			for i in self.colorSheet:
 				for j in i["val"]:
 					if color == j:
-						if self.colorBefore != None:
 							if color == 3 and self.colorBefore != 3:
 								print(self.colorBefore)
 								self.greenCounter = self.greenCounter + 1
 								if self.greenCounter == 2:
 									self.greenCounter = 0
 									self.colorBefore = color
-									return {"toDo": i["toDo"], "event": "brickDown"}
+								return {"toDo": i["toDo"], "event": "brickDown"}
 						if self.colorBefore != color:
 							print(color)
 							self.colorBefore = color
