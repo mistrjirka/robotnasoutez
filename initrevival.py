@@ -63,8 +63,8 @@ class Robot:
 					while (self.motors[0].position - self.dist) < i["degreesDelay"]:
 						print(str(self.motors[0].position) + " " + str(self.motors[0].position - self.dist))
 						sleep(0.01)
-					self.motors[0].stop()
-					self.motors[1].stop()
+					#~ self.motors[0].stop()
+					#~ self.motors[1].stop()
 					motorAreRunning = False
 					if str(type(i["toDo"]).__name__) == "list":
 						print(str(i["toDo"]) +" "+ str(type(i["toDo"]).__name__))
@@ -133,6 +133,7 @@ def main():
 	while True:
 		color = getColorFromRaw(cs)
 		print(color)
+		history = "stop"
 		toDo = robot.colorResponse(color)
 		if toDo is not None:
 			history = "start"
