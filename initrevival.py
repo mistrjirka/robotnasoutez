@@ -146,9 +146,11 @@ def main():
 				robot.do(toDo["toDo"])
 				robot.brickDownEvent()
 		else:
-			history = "stop"
-			mot1.stop()
-			mot2.stop()
+			if getColorFromRaw(cs) != 4:
+				while getColorFromRaw(cs) != None:
+					mot1.run_forever(speed_sp = 500)
+					mot2.run_forever(speed_sp = 500)
+	
 		"""elif history == 4:
 			mot1.run_forever(speed_sp = 600)
 			mot2.run_forever(speed_sp = 600)
