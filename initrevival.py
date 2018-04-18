@@ -92,12 +92,14 @@ class Robot:
 					if color == j:
 						if self.colorBefore != None:
 							if color == 3 and self.colorBefore != 3:
+								print(self.colorBefore)
 								self.greenCounter = self.greenCounter + 1
 								if self.greenCounter == 2:
 									self.greenCounter = 0
 									self.colorBefore = color
 									return {"toDo": i["toDo"], "event": "brickDown"}
 						if self.colorBefore != color:
+							print(color)
 							self.colorBefore = color
 							return {"toDo": i["toDo"], "event": None}
 						else:
@@ -124,8 +126,8 @@ def main():
 	global history
 	global motorAreRunning
 	motorAreRunning = True
-	mot1.run_forever(speed_sp = 500)
-	mot2.run_forever(speed_sp = 500)
+	mot1.run_forever(speed_sp = 400)
+	mot2.run_forever(speed_sp = 400)
 	while getColorFromRaw(cs) == 4:
 		sleep(0.03)
 		print ("jeste ne" + str(getColorFromRaw(cs)))
@@ -148,26 +150,12 @@ def main():
 		else:
 			if getColorFromRaw(cs) != 4:
 				while getColorFromRaw(cs) == None:
-					mot1.run_forever(speed_sp = 500)
-					mot2.run_forever(speed_sp = 500)
+					mot1.run_forever(speed_sp = 400)
+					mot2.run_forever(speed_sp = 400)
 					
 			else:
 				mot1.stop()
 				mot2.stop()
-	
-		"""elif history == 4:
-			mot1.run_forever(speed_sp = 600)
-			mot2.run_forever(speed_sp = 600)
-			motorAreRunning = True
-			while getColorFromRaw(cs) != 4:
-				sleep(0.03)
-			mot1.stop()
-			mot2.stop()
-			motorAreRunning = False
-		else:
-			mot1.stop()
-			mot2.stop()
-			motorAreRunning = False"""
 		
 		sleep(0.25)
 #wait for signal to start
