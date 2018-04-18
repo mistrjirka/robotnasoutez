@@ -92,6 +92,7 @@ class Robot:
 					if color == j:
 						if color == 3 and self.colorBefore != 3:
 							print(self.colorBefore, color)
+							print("tohle")
 							self.greenCounter = self.greenCounter + 1
 							if self.greenCounter == 2:
 								self.greenCounter = 0
