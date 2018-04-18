@@ -134,7 +134,6 @@ def main():
 	while True:
 		color = getColorFromRaw(cs)
 		print(color)
-		history = "stop"
 		toDo = robot.colorResponse(color)
 		print (history)
 		if toDo is not None:
