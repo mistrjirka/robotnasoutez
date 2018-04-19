@@ -162,6 +162,6 @@ def main():
 		sleep(0.25)
 #wait for signal to start
 while True:
-	if getColorFromRaw(cs) == 4 or ts.value() == 1:
+	if getColorFromRaw(cs) == 4 and ts.value() == 1:
 		main()
 		break
